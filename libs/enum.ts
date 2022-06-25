@@ -1,10 +1,3 @@
-export interface TossPaymentsConfig {
-  /**
-   * 시크릿 키는 토스페이먼츠 API를 호출할 때 사용되는 키입니다. 노출되면 안됩니다.
-   */
-  secretKey: string;
-}
-
 export enum ACQUIRE_STATUS {
   /** 매입 대기 */
   READY = 'READY',
