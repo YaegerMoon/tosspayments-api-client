@@ -1,12 +1,13 @@
 import { AxiosInstance } from 'axios';
 import { join } from 'path';
+import { Resource } from '../resource';
 import { KeyInPaymentBody, Payment, PaymentCancelBody, VAccountReqBody } from './type';
 
 /**
  * 결제와 관련한 모든 API
  */
-export class PaymentResource {
-  private path = 'payments';
+export class PaymentResource implements Resource {
+  readonly path = 'payments';
   constructor(private httpClient: AxiosInstance) {}
 
   /**

@@ -1,5 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
+import { BillingResource } from './resource/billing';
 import { PaymentResource } from './resource/payment';
+import { PromotionResource } from './resource/promotion';
 
 export const TOSS_PAYMENTS_API_BASE_URL = 'https://api.tosspayments.com/v1';
 export interface TossPaymentsConfig {
@@ -13,6 +15,8 @@ export class TossPaymentsAPI {
   httpClient: AxiosInstance;
 
   readonly payments: PaymentResource;
+  readonly promotions: PromotionResource;
+  readonly billing: BillingResource;
 
   constructor(config: TossPaymentsConfig) {
     const { secretKey, baseURL } = config;
@@ -26,5 +30,7 @@ export class TossPaymentsAPI {
     });
 
     this.payments = new PaymentResource(this.httpClient);
+    this.promotions = new PromotionResource(this.httpClient);
+    this.billing = new BillingResource(this.httpClient);
   }
 }
