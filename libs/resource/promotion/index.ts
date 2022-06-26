@@ -1,12 +1,13 @@
 import { AxiosInstance } from 'axios';
 import { join } from 'path';
+import { Resource } from '../resource';
 import { CardPromotion } from './type';
 /**
  * 카드 혜택 API로 카드사별 할인 프로모션과 할부 혜택을 조회해서 고객에게 제공할 수 있습니다.
  * {@link https://docs.tosspayments.com/reference#%EC%B9%B4%EB%93%9C-%ED%98%9C%ED%83%9D}
  */
-export class PromotionResource {
-  private path = 'promotions';
+export class PromotionResource implements Resource {
+  readonly path = 'promotions';
   constructor(private httpClient: AxiosInstance) {}
 
   /**

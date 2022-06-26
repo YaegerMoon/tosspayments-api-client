@@ -1,9 +1,10 @@
 import { AxiosInstance } from 'axios';
 import { join } from 'path';
+import { Resource } from '../resource';
 import { Billing, RequestBillingApproveBody, RequestBillingAuthByCustomerKey } from './type';
 
-export class BillingResource {
-  private path = 'billing';
+export class BillingResource implements Resource {
+  readonly path = 'billing';
   constructor(private httpClient: AxiosInstance) {}
 
   public get authorizations() {
