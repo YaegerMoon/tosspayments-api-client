@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import { CashReceiptResource, TransactionResource } from './resource';
 import { BillingResource } from './resource/billing';
 import { PaymentResource } from './resource/payment';
 import { PromotionResource } from './resource/promotion';
@@ -13,27 +14,29 @@ export interface TossPaymentsConfig {
 }
 
 export class TossPaymentsAPI {
-  httpClient: AxiosInstance;
-
   readonly payments: PaymentResource;
   readonly promotions: PromotionResource;
   readonly billing: BillingResource;
   readonly settlements: SettlementResource;
+  readonly cashReceipt: CashReceiptResource;
+  readonly transactions: TransactionResource;
 
   constructor(config: TossPaymentsConfig) {
     const { secretKey, baseURL } = config;
     const base64key = Buffer.from(secretKey + ':', 'utf-8').toString('base64');
 
-    this.httpClient = axios.create({
+    const httpClient = axios.create({
       baseURL,
       headers: {
         Authorization: `Bearer ${base64key}`,
       },
     });
 
-    this.payments = new PaymentResource(this.httpClient);
-    this.promotions = new PromotionResource(this.httpClient);
-    this.billing = new BillingResource(this.httpClient);
-    this.settlements = new SettlementResource(this.httpClient);
+    this.payments = new PaymentResource(httpClient);
+    this.promotions = new PromotionResource(httpClient);
+    this.billing = new BillingResource(httpClient);
+    this.settlements = new SettlementResource(httpClient);
+    this.cashReceipt = new CashReceiptResource(httpClient);
+    this.transactions = new TransactionResource(httpClient);
   }
 }
