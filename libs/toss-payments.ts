@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios';
+import axios from 'axios';
 import { CashReceiptResource, TransactionResource } from './resource';
 import { BillingResource } from './resource/billing';
 import { PaymentResource } from './resource/payment';
