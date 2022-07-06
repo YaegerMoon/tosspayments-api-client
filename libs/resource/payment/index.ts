@@ -18,7 +18,7 @@ export class PaymentResource implements Resource {
    * @returns 결제 승인 요청에 성공했다면 Payment 객체가 돌아옵니다.
    * {@link https://docs.tosspayments.com/reference#%EA%B2%B0%EC%A0%9C-%EC%8A%B9%EC%9D%B8}
    * */
-  async approve(paymentKey: string, amount: number, orderId: string) {
+  async confirm(paymentKey: string, amount: number, orderId: string) {
     const url = join(this.path, paymentKey);
     const reqBody = { amount, orderId };
     const { data: payment } = await this.httpClient.post<Payment>(url, reqBody);
@@ -31,7 +31,7 @@ export class PaymentResource implements Resource {
    * @returns 결제 조회 요청에 성공했다면 Payment 객체가 돌아옵니다.
    * ${@link https://docs.tosspayments.com/reference#paymentkey%EB%A1%9C-%EA%B2%B0%EC%A0%9C-%EC%A1%B0%ED%9A%8C}
    */
-  async retrieve(paymentKey: string) {
+  async get(paymentKey: string) {
     const url = join(this.path, paymentKey);
     const { data: payment } = await this.httpClient.get<Payment>(url);
     return payment;
@@ -51,7 +51,7 @@ export class PaymentResource implements Resource {
 
   get orders() {
     return {
-      retrieve: this.retrieveByOrderId,
+      get: this.retrieveByOrderId,
     };
   }
 
@@ -73,7 +73,7 @@ export class PaymentResource implements Resource {
    * @returns 카드 정보 결제 요청에 성공했다면 Payment 객체가 돌아옵니다.
    * {@link https://docs.tosspayments.com/reference#%EC%B9%B4%EB%93%9C-%EC%A0%95%EB%B3%B4-%EA%B2%B0%EC%A0%9C}
    */
-  async keyInPayment(body: KeyInPaymentBody) {
+  async keyIn(body: KeyInPaymentBody) {
     const url = join(this.path, 'key-in');
     const { data: payment } = await this.httpClient.post<Payment>(url, body);
     return payment;
