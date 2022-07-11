@@ -7,10 +7,10 @@ export class BillingResource implements Resource {
   readonly path = 'billing';
   constructor(private httpClient: AxiosInstance) {}
 
-  public get authorizations() {
+  get authorizations() {
     return {
-      customerKey: this.requestBillingKeyByCustomerKey,
-      authKey: this.requestBillingKeyByAuthKey,
+      customerKey: this.requestBillingKeyByCustomerKey.bind(this),
+      authKey: this.requestBillingKeyByAuthKey.bind(this),
     };
   }
 

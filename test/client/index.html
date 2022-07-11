@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://js.tosspayments.com/v1"></script>
+    <title>Toss Payment Client Test</title>
+</head>
+<body>
+    
+    <script>
+        var clientKey = "test_ck_D4yKeq5bgrpgg105xNAVGX0lzW6Y"
+        var tossPayments = TossPayments(clientKey)
+
+
+        tossPayments.requestPayment('카드', {
+            amount: 15000,
+            orderId: 'XE490JfCtH5cThmsuBMJB',
+            orderName: '토스 티셔츠 외 2건',
+            customerName: '박토스',
+            successUrl: 'http://localhost:8080/success',
+            failUrl: 'http://localhost:8080/fail',
+        })
+    </script>
+</body>
+</html>
