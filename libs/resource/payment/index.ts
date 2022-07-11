@@ -51,7 +51,7 @@ export class PaymentResource implements Resource {
 
   get orders() {
     return {
-      get: this.retrieveByOrderId,
+      get: this.retrieveByOrderId.bind(this),
     };
   }
 

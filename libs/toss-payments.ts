@@ -6,6 +6,8 @@ import { PromotionResource } from './resource/promotion';
 import { SettlementResource } from './resource/settlement';
 
 export const TOSS_PAYMENTS_API_BASE_URL = 'https://api.tosspayments.com/v1';
+export const TOSS_PAYMENTS_TEST_KEY = 'test_sk_Kma60RZblrq66aPokGb8wzYWBn14';
+export const AUTH_TYPE = 'Basic';
 export interface TossPaymentsConfig {
   /** 시크릿 키는 토스페이먼츠 API를 호출할 때 사용되는 키입니다. 노출되면 안됩니다. */
   secretKey: string;
@@ -28,7 +30,7 @@ export class TossPaymentsAPI {
     const httpClient = axios.create({
       baseURL,
       headers: {
-        Authorization: `Bearer ${base64key}`,
+        Authorization: `${AUTH_TYPE} ${base64key}`,
       },
     });
 
