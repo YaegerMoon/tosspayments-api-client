@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toss Payments Success</title>
+</head>
+<body>
+    <h1 id="origin" >  </h1>
+    <h1 id="href"></h1>
+    <h1 id="search"></h1>
+    <script>
+        const h1Origin = document.getElementById("origin")
+        const h1href = document.getElementById("href")
+        const h1search = document.getElementById("search")
+
+        h1Origin.innerHTML = window.location.origin;
+        h1href.innerHTML = window.location.href
+        h1search.innerHTML =window.location.search;
+
+
+    </script>
+</body>
+</html>
