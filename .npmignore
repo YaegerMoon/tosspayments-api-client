@@ -1,1 +1,16 @@
-lib/
+libs/
+
+.husky/
+
+jest.config.js
+
+test/
+
+.versionrc.js
+
+.prettierrc
+
+.eslintrc.js
+
+commitlint.config.js
+
